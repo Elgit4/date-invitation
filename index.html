@@ -1,436 +1,899 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>A Question For You</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --blush: #ffd9e8;
-    --blush-deep: #ff9fc4;
-    --lavender: #e6d9ff;
-    --lavender-deep: #c9adff;
-    --cream: #fffaf5;
-    --plum: #4a2545;
-    --plum-soft: #8a6b86;
-    --gold: #ffc857;
-    --mint: #b8f2d9;
-    --shadow: rgba(138, 65, 110, 0.18);
-    --radius-lg: 28px;
-    --radius-md: 18px;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>A Special Invitation Just For You 💕</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blush: #ffd9e8;
+      --blush-deep: #ff9fc4;
+      --blush-light: #ffe8f3;
+      --rose: #ff6f9c;
+      --rose-dark: #ff5582;
+      --lavender: #e6d9ff;
+      --lavender-deep: #c9adff;
+      --lavender-light: #f0e6ff;
+      --cream: #fffaf5;
+      --plum: #4a2545;
+      --plum-soft: #8a6b86;
+      --plum-light: #b89db0;
+      --gold: #ffc857;
+      --gold-light: #ffe8a8;
+      --mint: #b8f2d9;
+      --shadow: rgba(138, 65, 110, 0.18);
+      --shadow-deep: rgba(138, 65, 110, 0.35);
+      --radius-lg: 32px;
+      --radius-md: 18px;
+    }
 
-  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
 
-  html,body{
-    width:100%;
-    min-height:100vh;
-    overflow-x:hidden;
-    font-family:'Quicksand',sans-serif;
-    color:var(--plum);
-    background:
-      radial-gradient(circle at 15% 20%, var(--lavender) 0%, transparent 45%),
-      radial-gradient(circle at 85% 15%, var(--blush) 0%, transparent 50%),
-      radial-gradient(circle at 50% 90%, var(--mint) 0%, transparent 40%),
-      linear-gradient(160deg, var(--cream) 0%, #fff 100%);
-    position:relative;
-  }
+    html, body {
+      width: 100%;
+      min-height: 100vh;
+      overflow-x: hidden;
+      font-family: 'Quicksand', sans-serif;
+      color: var(--plum);
+      background: linear-gradient(135deg, var(--cream) 0%, #fff8f5 50%, var(--lavender-light) 100%);
+      position: relative;
+      scroll-behavior: smooth;
+    }
 
-  @media (prefers-reduced-motion: reduce){
-    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
-  }
+    /* Animated gradient background with particles */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: 
+        radial-gradient(circle at 15% 20%, var(--lavender) 0%, transparent 45%),
+        radial-gradient(circle at 85% 15%, var(--blush) 0%, transparent 50%),
+        radial-gradient(circle at 50% 90%, var(--mint) 0%, transparent 40%);
+      animation: gradientShift 12s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
 
-  h1,h2,h3,.display{font-family:'Fredoka',sans-serif;}
+    @keyframes gradientShift {
+      0%, 100% {
+        opacity: 0.85;
+        filter: blur(0px);
+      }
+      50% {
+        opacity: 1;
+        filter: blur(1px);
+      }
+    }
 
-  button{font-family:inherit;border:none;cursor:pointer;background:none;}
-  button:focus-visible, a:focus-visible{outline:3px solid var(--gold); outline-offset:3px; border-radius:12px;}
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      body::before {
+        animation: none !important;
+      }
+    }
 
-  /* ---------- background ambience ---------- */
-  #bg-canvas{
-    position:fixed; inset:0; width:100%; height:100%;
-    pointer-events:none; z-index:0;
-  }
+    h1, h2, h3, .display {
+      font-family: 'Fredoka', sans-serif;
+      letter-spacing: -0.5px;
+    }
 
-  .twinkle{
-    position:fixed; border-radius:50%;
-    background:var(--gold); opacity:0.55;
-    animation:twinkle 3.2s ease-in-out infinite;
-    pointer-events:none; z-index:0;
-  }
-  @keyframes twinkle{
-    0%,100%{opacity:0.15; transform:scale(0.7);}
-    50%{opacity:0.85; transform:scale(1.15);}
-  }
+    button {
+      font-family: inherit;
+      border: none;
+      cursor: pointer;
+      background: none;
+      transition: all 0.2s ease;
+    }
 
-  /* ---------- layout stages ---------- */
-  .stage{
-    position:relative; z-index:2;
-    min-height:100vh;
-    display:flex; align-items:center; justify-content:center;
-    padding:32px 20px;
-  }
+    button:focus-visible, a:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 3px;
+      border-radius: 12px;
+    }
 
-  .hidden{display:none !important;}
-  .fade-out{animation:fadeOutStage 0.6s ease forwards;}
-  @keyframes fadeOutStage{to{opacity:0; transform:scale(0.97);}}
+    /* Background canvas and ambient effects */
+    #bg-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
 
-  /* ---------- intro ---------- */
-  #intro-stage{flex-direction:column; text-align:center; gap:18px;}
-  .intro-text{
-    font-family:'Fredoka',sans-serif;
-    font-size:clamp(1.6rem, 5vw, 2.6rem);
-    font-weight:600;
-    color:var(--plum);
-    opacity:0;
-    animation:introFade 1.4s ease forwards;
-    line-height:1.4;
-  }
-  .intro-text span{display:block;}
-  .intro-text .sub{
-    font-family:'Quicksand',sans-serif;
-    font-size:0.55em; font-weight:600; color:var(--plum-soft);
-    margin-top:6px;
-  }
-  @keyframes introFade{
-    0%{opacity:0; transform:translateY(14px);}
-    100%{opacity:1; transform:translateY(0);}
-  }
+    .twinkle {
+      position: fixed;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0.55;
+      animation: twinkle 3.2s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 0;
+      box-shadow: 0 0 8px var(--gold);
+    }
 
-  /* ---------- glass card ---------- */
-  .glass-card{
-    background:rgba(255,255,255,0.55);
-    backdrop-filter:blur(18px);
-    -webkit-backdrop-filter:blur(18px);
-    border:1px solid rgba(255,255,255,0.7);
-    border-radius:var(--radius-lg);
-    box-shadow:0 20px 60px var(--shadow), inset 0 1px 0 rgba(255,255,255,0.8);
-    padding:clamp(28px, 5vw, 52px);
-    max-width:560px;
-    width:100%;
-    text-align:center;
-    position:relative;
-    animation:cardIn 0.7s cubic-bezier(.2,.9,.3,1.3) both;
-  }
-  @keyframes cardIn{
-    0%{opacity:0; transform:translateY(30px) scale(0.94);}
-    100%{opacity:1; transform:translateY(0) scale(1);}
-  }
+    @keyframes twinkle {
+      0%, 100% {
+        opacity: 0.15;
+        transform: scale(0.7);
+        filter: blur(0px);
+      }
+      50% {
+        opacity: 0.85;
+        transform: scale(1.15);
+        filter: blur(1px);
+      }
+    }
 
-  /* ---------- bears illustration ---------- */
-  .bear-illustration{
-    width:min(260px, 70vw);
-    margin:0 auto 6px;
-    display:block;
-    animation:bearSway 4.5s ease-in-out infinite;
-  }
-  @keyframes bearSway{
-    0%,100%{transform:rotate(-1.2deg);}
-    50%{transform:rotate(1.2deg);}
-  }
+    /* Layout stages */
+    .stage {
+      position: relative;
+      z-index: 2;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(20px, 5vw, 40px);
+      gap: 20px;
+    }
 
-  .question-title{
-    font-size:clamp(1.5rem, 5.4vw, 2.15rem);
-    font-weight:600;
-    margin:14px 0 28px;
-    line-height:1.35;
-    color:var(--plum);
-  }
+    .hidden {
+      display: none !important;
+    }
 
-  /* ---------- button arena ---------- */
-  .button-arena{
-    position:relative;
-    min-height:150px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:22px;
-    flex-wrap:wrap;
-  }
+    .fade-out {
+      animation: fadeOutStage 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
 
-  .btn{
-    position:relative;
-    padding:16px 34px;
-    border-radius:999px;
-    font-weight:700;
-    font-size:1.05rem;
-    transition:transform 0.18s ease, box-shadow 0.18s ease, background 0.3s ease;
-    overflow:hidden;
-    white-space:nowrap;
-  }
+    @keyframes fadeOutStage {
+      to {
+        opacity: 0;
+        transform: scale(0.95) translateY(-20px);
+      }
+    }
 
-  .btn-yes{
-    background:linear-gradient(135deg, #ff8fb3, #ff6f9c);
-    color:#fff;
-    box-shadow:0 10px 28px rgba(255,111,156,0.45);
-  }
-  .btn-yes:hover{transform:translateY(-3px) scale(1.03);}
+    /* Intro stage */
+    #intro-stage {
+      flex-direction: column;
+      text-align: center;
+      gap: 24px;
+    }
 
-  .btn-no{
-    background:rgba(255,255,255,0.75);
-    color:var(--plum-soft);
-    border:2px solid rgba(138,107,134,0.25);
-    position:fixed;
-    z-index:50;
-  }
-  .btn-no.static{position:relative; z-index:1;}
+    .intro-text {
+      font-family: 'Fredoka', sans-serif;
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      font-weight: 700;
+      color: var(--plum);
+      opacity: 0;
+      animation: introFade 1.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      line-height: 1.3;
+      letter-spacing: -1px;
+    }
 
-  .yes-glow{
-    animation:yesPulse 1.1s ease-in-out infinite;
-    box-shadow:0 0 0 0 rgba(255,111,156,0.6), 0 10px 34px rgba(255,111,156,0.55) !important;
-  }
-  @keyframes yesPulse{
-    0%,100%{box-shadow:0 0 0 0 rgba(255,111,156,0.55), 0 10px 34px rgba(255,111,156,0.5);}
-    50%{box-shadow:0 0 0 14px rgba(255,111,156,0), 0 10px 34px rgba(255,111,156,0.65);}
-  }
+    .intro-text span {
+      display: block;
+    }
 
-  .ripple{
-    position:absolute; border-radius:50%;
-    background:rgba(255,255,255,0.6);
-    transform:scale(0);
-    animation:rippleAnim 0.6s ease-out forwards;
-    pointer-events:none;
-  }
-  @keyframes rippleAnim{to{transform:scale(3.2); opacity:0;}}
+    .intro-text .sub {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 0.5em;
+      font-weight: 500;
+      color: var(--plum-soft);
+      margin-top: 12px;
+      letter-spacing: 0.5px;
+    }
 
-  .attempt-counter{
-    margin-top:22px;
-    font-size:0.9rem;
-    font-weight:600;
-    color:var(--plum-soft);
-    letter-spacing:0.02em;
-  }
+    @keyframes introFade {
+      0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
 
-  .taunt-message{
-    min-height:28px;
-    margin-top:14px;
-    font-size:0.98rem;
-    font-weight:600;
-    color:#c3457a;
-    opacity:0;
-  }
-  .taunt-message.show{
-    animation:taunt 1.8s ease forwards;
-  }
-  @keyframes taunt{
-    0%{opacity:0; transform:translateY(6px);}
-    15%{opacity:1; transform:translateY(0);}
-    85%{opacity:1;}
-    100%{opacity:0;}
-  }
+    /* Premium glass card */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1.5px solid rgba(255, 255, 255, 0.85);
+      border-radius: var(--radius-lg);
+      box-shadow: 
+        0 8px 32px var(--shadow),
+        0 0 1px rgba(255, 255, 255, 0.5) inset,
+        0 20px 60px -10px var(--shadow-deep);
+      padding: clamp(32px, 6vw, 56px);
+      max-width: 580px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+      animation: cardIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    }
 
-  .expert-badge{
-    margin-top:16px;
-    display:inline-block;
-    padding:8px 18px;
-    border-radius:999px;
-    background:linear-gradient(135deg, var(--gold), #ffb347);
-    color:#5a3a00;
-    font-weight:700;
-    font-size:0.85rem;
-    opacity:0;
-    transform:scale(0.6);
-  }
-  .expert-badge.show{
-    animation:badgePop 0.6s cubic-bezier(.2,.9,.3,1.4) forwards;
-  }
-  @keyframes badgePop{
-    to{opacity:1; transform:scale(1);}
-  }
+    @keyframes cardIn {
+      0% {
+        opacity: 0;
+        transform: translateY(40px) scale(0.92);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
 
-  /* ---------- fake loading overlay ---------- */
-  #loading-overlay{
-    position:fixed; inset:0; z-index:200;
-    background:rgba(74,37,69,0.85);
-    backdrop-filter:blur(6px);
-    display:flex; align-items:center; justify-content:center;
-    color:#fff; text-align:center;
-    opacity:0; pointer-events:none;
-    transition:opacity 0.3s ease;
-  }
-  #loading-overlay.active{opacity:1; pointer-events:all;}
-  .loading-box{max-width:340px; padding:0 24px;}
-  .loading-box p{font-weight:600; margin-bottom:18px; font-size:1.1rem;}
-  .loading-bar-track{
-    width:100%; height:10px; border-radius:999px;
-    background:rgba(255,255,255,0.25); overflow:hidden; margin-bottom:10px;
-  }
-  .loading-bar-fill{
-    height:100%; width:0%;
-    background:linear-gradient(90deg, var(--gold), var(--blush-deep));
-    border-radius:999px;
-    transition:width 0.35s ease;
-  }
-  .loading-pct{font-weight:700; font-size:0.95rem;}
-  .loading-error{
-    margin-top:16px; font-weight:700; font-size:1.05rem; color:#ffd9d9;
-    opacity:0;
-  }
-  .loading-error.show{animation:taunt 2.2s ease forwards;}
+    /* Bears illustration with enhanced animation */
+    .bear-illustration {
+      width: min(280px, 75vw);
+      margin: 0 auto 12px;
+      display: block;
+      animation: bearSway 5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+      filter: drop-shadow(0 12px 24px var(--shadow));
+    }
 
-  /* ---------- celebration stage ---------- */
-  #celebrate-stage{flex-direction:column; text-align:center; gap:6px;}
-  .celebrate-heading{
-    font-size:clamp(2rem, 8vw, 3.2rem);
-    font-weight:700;
-    color:#ff6f9c;
-    opacity:0;
-    animation:popIn 0.7s cubic-bezier(.2,.9,.3,1.4) 0.1s forwards;
-  }
-  @keyframes popIn{
-    0%{opacity:0; transform:scale(0.5);}
-    100%{opacity:1; transform:scale(1);}
-  }
-  .celebrate-line{
-    font-size:clamp(1rem, 3.6vw, 1.3rem);
-    font-weight:600;
-    color:var(--plum-soft);
-    max-width:440px;
-    opacity:0;
-  }
-  .celebrate-line.reveal{animation:lineIn 0.8s ease forwards;}
-  @keyframes lineIn{
-    0%{opacity:0; transform:translateY(10px);}
-    100%{opacity:1; transform:translateY(0);}
-  }
+    @keyframes bearSway {
+      0%, 100% {
+        transform: rotate(-1.5deg) translateY(0);
+      }
+      25% {
+        transform: rotate(0.5deg) translateY(-2px);
+      }
+      50% {
+        transform: rotate(1.5deg) translateY(0);
+      }
+      75% {
+        transform: rotate(0.5deg) translateY(-2px);
+      }
+    }
 
-  .picker-block{
-    margin-top:8px;
-    opacity:0;
-  }
-  .picker-block.reveal{animation:lineIn 0.8s ease forwards;}
+    .question-title {
+      font-size: clamp(1.6rem, 6vw, 2.4rem);
+      font-weight: 700;
+      margin: 20px 0 32px;
+      line-height: 1.35;
+      color: var(--plum);
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
 
-  .picker-label{
-    font-weight:700;
-    font-size:0.9rem;
-    color:var(--plum-soft);
-    margin:16px 0 10px;
-    letter-spacing:0.02em;
-  }
-  .picker-block .picker-label:first-child{margin-top:4px;}
+    /* Button arena */
+    .button-arena {
+      position: relative;
+      min-height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
 
-  .chip-group{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-    justify-content:center;
-  }
+    .btn {
+      position: relative;
+      padding: 16px 36px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 1.08rem;
+      transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+      overflow: visible;
+      white-space: nowrap;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      font-size: clamp(0.95rem, 2vw, 1.08rem);
+    }
 
-  .chip{
-    padding:10px 18px;
-    border-radius:999px;
-    background:rgba(255,255,255,0.6);
-    border:2px solid rgba(138,107,134,0.2);
-    color:var(--plum);
-    font-weight:600;
-    font-size:0.92rem;
-    transition:transform 0.15s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-  }
-  .chip:hover{transform:translateY(-2px);}
-  .chip.selected{
-    background:linear-gradient(135deg, #ff8fb3, #ff6f9c);
-    border-color:transparent;
-    color:#fff;
-    box-shadow:0 8px 20px rgba(255,111,156,0.4);
-    transform:translateY(-2px) scale(1.03);
-  }
+    /* YES button - premium styled */
+    .btn-yes {
+      background: linear-gradient(135deg, #ff8fb3 0%, #ff6f9c 50%, #ff5582 100%);
+      color: #fff;
+      box-shadow: 
+        0 12px 32px rgba(255, 111, 156, 0.4),
+        0 0 0 0 rgba(255, 111, 156, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      border: none;
+      position: relative;
+    }
 
-  #confirm-date-btn{
-    margin-top:24px;
-    opacity:0.4;
-    pointer-events:none;
-    font-size:0.98rem;
-    padding:14px 30px;
-  }
-  #confirm-date-btn.ready{
-    opacity:1;
-    pointer-events:all;
-  }
+    .btn-yes::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 999px;
+      background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.2));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
 
-  .calendar-illustration{width:min(180px, 50vw); margin:18px auto 4px;}
+    .btn-yes:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 
+        0 16px 40px rgba(255, 111, 156, 0.5),
+        0 0 0 8px rgba(255, 111, 156, 0.1);
+    }
 
-  .date-plan{
-    margin-top:8px;
-    background:rgba(255,255,255,0.6);
-    border-radius:var(--radius-md);
-    padding:18px 26px;
-    font-weight:600;
-    color:var(--plum);
-    line-height:1.9;
-    opacity:0;
-  }
-  .date-plan.reveal{animation:lineIn 0.8s ease forwards;}
+    .btn-yes:active {
+      transform: translateY(-2px) scale(1.02);
+    }
 
-  .final-line{
-    margin-top:14px;
-    font-weight:700;
-    color:#ff6f9c;
-    font-size:1.05rem;
-    opacity:0;
-  }
-  .final-line.reveal{animation:lineIn 0.8s ease forwards;}
+    /* YES glow animation */
+    .yes-glow {
+      animation: yesPulse 1.3s ease-in-out infinite;
+    }
 
-  /* ---------- floating hearts / confetti ---------- */
-  .floater{
-    position:fixed;
-    pointer-events:none;
-    z-index:150;
-    user-select:none;
-  }
-  @keyframes floatUp{
-    0%{transform:translateY(0) rotate(0deg); opacity:0.9;}
-    100%{transform:translateY(-110vh) rotate(360deg); opacity:0;}
-  }
-  @keyframes confettiFall{
-    0%{transform:translateY(-10vh) rotate(0deg); opacity:1;}
-    100%{transform:translateY(110vh) rotate(540deg); opacity:0.9;}
-  }
+    @keyframes yesPulse {
+      0%, 100% {
+        box-shadow: 
+          0 0 0 0 rgba(255, 111, 156, 0.6),
+          0 12px 32px rgba(255, 111, 156, 0.4),
+          inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      }
+      50% {
+        box-shadow: 
+          0 0 0 18px rgba(255, 111, 156, 0),
+          0 12px 40px rgba(255, 111, 156, 0.6),
+          inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      }
+    }
 
-  /* ---------- music toggle ---------- */
-  #music-toggle{
-    position:fixed; bottom:22px; right:22px; z-index:120;
-    width:56px; height:56px; border-radius:50%;
-    background:rgba(255,255,255,0.75);
-    backdrop-filter:blur(10px);
-    box-shadow:0 8px 24px var(--shadow);
-    display:flex; align-items:center; justify-content:center;
-    font-size:1.4rem;
-    transition:transform 0.2s ease;
-  }
-  #music-toggle:hover{transform:scale(1.08);}
-  #music-toggle.playing{animation:musicPulse 1.6s ease-in-out infinite;}
-  @keyframes musicPulse{
-    0%,100%{box-shadow:0 8px 24px var(--shadow);}
-    50%{box-shadow:0 8px 32px rgba(255,159,196,0.6);}
-  }
+    /* NO button - playful evasive styling */
+    .btn-no {
+      background: rgba(255, 255, 255, 0.85);
+      color: var(--plum-soft);
+      border: 2.5px solid rgba(138, 107, 134, 0.3);
+      position: fixed;
+      z-index: 50;
+      box-shadow: 0 10px 28px var(--shadow);
+      transition: all 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
 
-  /* ---------- cursor heart particles ---------- */
-  .cursor-heart{
-    position:fixed; z-index:100; pointer-events:none;
-    font-size:14px; color:var(--blush-deep);
-    animation:cursorHeartFade 0.9s ease forwards;
-  }
-  @keyframes cursorHeartFade{
-    0%{opacity:0.85; transform:translateY(0) scale(1);}
-    100%{opacity:0; transform:translateY(-30px) scale(0.4);}
-  }
+    .btn-no:hover {
+      background: rgba(255, 255, 255, 0.95);
+      border-color: rgba(138, 107, 134, 0.4);
+      transform: translateY(-2px);
+    }
 
-  footer{
-    position:relative; z-index:2;
-    text-align:center;
-    padding:18px 12px 26px;
-    font-size:0.8rem;
-    color:var(--plum-soft);
-    font-weight:600;
-  }
+    .btn-no.static {
+      position: relative;
+      z-index: 1;
+    }
 
-  @media (max-width:480px){
-    .button-arena{min-height:190px;}
-    .btn{padding:14px 26px; font-size:0.95rem;}
-  }
-</style>
+    .btn-no.dodging {
+      transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* Ripple effect */
+    .ripple {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.6);
+      transform: scale(0);
+      animation: rippleAnim 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      pointer-events: none;
+    }
+
+    @keyframes rippleAnim {
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
+    }
+
+    /* Attempt counter and taunt message */
+    .attempt-counter {
+      margin-top: 28px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--plum-soft);
+      letter-spacing: 0.02em;
+      min-height: 24px;
+    }
+
+    .taunt-message {
+      min-height: 32px;
+      margin-top: 16px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--rose);
+      opacity: 0;
+    }
+
+    .taunt-message.show {
+      animation: taunt 2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    @keyframes taunt {
+      0% {
+        opacity: 0;
+        transform: translateY(12px) scale(0.8);
+      }
+      15% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+      85% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-12px) scale(0.8);
+      }
+    }
+
+    /* Expert badge */
+    .expert-badge {
+      margin-top: 20px;
+      display: inline-block;
+      padding: 10px 22px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--gold) 0%, #ffb347 100%);
+      color: #5a3a00;
+      font-weight: 700;
+      font-size: 0.88rem;
+      opacity: 0;
+      transform: scale(0.6);
+      box-shadow: 0 8px 24px rgba(255, 200, 87, 0.4);
+      letter-spacing: 0.5px;
+    }
+
+    .expert-badge.show {
+      animation: badgePop 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    @keyframes badgePop {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* Loading overlay */
+    #loading-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(74, 37, 69, 0.88);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-align: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    #loading-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .loading-box {
+      max-width: 360px;
+      padding: 0 32px;
+      animation: loadingPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    @keyframes loadingPop {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .loading-box p {
+      font-weight: 600;
+      margin-bottom: 20px;
+      font-size: 1.15rem;
+      letter-spacing: 0.3px;
+    }
+
+    .loading-bar-track {
+      width: 100%;
+      height: 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.25);
+      overflow: hidden;
+      margin-bottom: 14px;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .loading-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--gold), var(--blush-deep), var(--rose));
+      border-radius: 999px;
+      transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 0 12px rgba(255, 111, 156, 0.5);
+    }
+
+    .loading-pct {
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.5px;
+    }
+
+    .loading-error {
+      margin-top: 18px;
+      font-weight: 700;
+      font-size: 1.08rem;
+      color: #ffd9d9;
+      opacity: 0;
+    }
+
+    .loading-error.show {
+      animation: taunt 2.4s ease forwards;
+    }
+
+    /* Celebration stage */
+    #celebrate-stage {
+      flex-direction: column;
+      text-align: center;
+      gap: 12px;
+    }
+
+    .celebrate-heading {
+      font-size: clamp(2.4rem, 9vw, 3.6rem);
+      font-weight: 800;
+      color: var(--rose);
+      opacity: 0;
+      animation: popIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s forwards;
+      letter-spacing: -1px;
+      text-shadow: 0 4px 12px rgba(255, 111, 156, 0.2);
+    }
+
+    @keyframes popIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.3) rotate(-10deg);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) rotate(0);
+      }
+    }
+
+    .celebrate-line {
+      font-size: clamp(1.05rem, 4vw, 1.4rem);
+      font-weight: 600;
+      color: var(--plum-soft);
+      max-width: 480px;
+      opacity: 0;
+      letter-spacing: 0.3px;
+    }
+
+    .celebrate-line.reveal {
+      animation: lineIn 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    @keyframes lineIn {
+      0% {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Picker block */
+    .picker-block {
+      margin-top: 12px;
+      opacity: 0;
+    }
+
+    .picker-block.reveal {
+      animation: lineIn 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    .picker-label {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--plum-soft);
+      margin: 18px 0 12px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .picker-block .picker-label:first-child {
+      margin-top: 8px;
+    }
+
+    .chip-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .chip {
+      padding: 12px 22px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.7);
+      border: 2px solid rgba(138, 107, 134, 0.25);
+      color: var(--plum);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      cursor: pointer;
+    }
+
+    .chip:hover {
+      transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.85);
+      border-color: rgba(138, 107, 134, 0.35);
+      box-shadow: 0 8px 20px var(--shadow);
+    }
+
+    .chip.selected {
+      background: linear-gradient(135deg, #ff8fb3, #ff6f9c);
+      border-color: transparent;
+      color: #fff;
+      box-shadow: 0 10px 28px rgba(255, 111, 156, 0.45);
+      transform: translateY(-3px) scale(1.05);
+    }
+
+    /* Confirm button */
+    #confirm-date-btn {
+      margin-top: 28px;
+      opacity: 0.4;
+      pointer-events: none;
+      font-size: 1rem;
+      padding: 16px 36px;
+      transition: all 0.3s ease;
+    }
+
+    #confirm-date-btn.ready {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    /* Calendar illustration */
+    .calendar-illustration {
+      width: min(200px, 55vw);
+      margin: 20px auto 8px;
+      animation: calendarFloat 4s ease-in-out infinite;
+    }
+
+    @keyframes calendarFloat {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-12px) rotate(1deg);
+      }
+    }
+
+    .date-plan {
+      margin-top: 12px;
+      background: rgba(255, 255, 255, 0.75);
+      border-radius: var(--radius-md);
+      border: 1.5px solid rgba(255, 111, 156, 0.2);
+      padding: 20px 32px;
+      font-weight: 600;
+      color: var(--plum);
+      line-height: 2;
+      opacity: 0;
+      font-size: 1.05rem;
+      letter-spacing: 0.3px;
+    }
+
+    .date-plan.reveal {
+      animation: lineIn 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    .final-line {
+      margin-top: 18px;
+      font-weight: 700;
+      color: var(--rose);
+      font-size: 1.1rem;
+      opacity: 0;
+      letter-spacing: 0.3px;
+    }
+
+    .final-line.reveal {
+      animation: lineIn 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    /* Floating elements */
+    .floater {
+      position: fixed;
+      pointer-events: none;
+      z-index: 150;
+      user-select: none;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(0deg) scale(1);
+        opacity: 0.95;
+      }
+      100% {
+        transform: translateY(-120vh) rotate(360deg) scale(0.3);
+        opacity: 0;
+      }
+    }
+
+    @keyframes confettiFall {
+      0% {
+        transform: translateY(-10vh) rotate(0deg) translateX(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(120vh) rotate(720deg) translateX(60px);
+        opacity: 0;
+      }
+    }
+
+    /* Heart particles on cursor */
+    .cursor-heart {
+      position: fixed;
+      z-index: 100;
+      pointer-events: none;
+      font-size: 16px;
+      color: var(--blush-deep);
+      animation: cursorHeartFade 1s ease forwards;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+    }
+
+    @keyframes cursorHeartFade {
+      0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-40px) scale(0.2);
+      }
+    }
+
+    /* Music toggle button */
+    #music-toggle {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 120;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 32px var(--shadow-deep);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      border: 1.5px solid rgba(255, 255, 255, 0.6);
+    }
+
+    #music-toggle:hover {
+      transform: scale(1.12);
+      box-shadow: 0 12px 40px rgba(255, 111, 156, 0.3);
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    #music-toggle:active {
+      transform: scale(1.08);
+    }
+
+    #music-toggle.playing {
+      animation: musicPulse 1.8s ease-in-out infinite;
+    }
+
+    @keyframes musicPulse {
+      0%, 100% {
+        box-shadow: 0 10px 32px var(--shadow-deep), 0 0 0 0 rgba(255, 111, 156, 0.3);
+      }
+      50% {
+        box-shadow: 0 10px 40px rgba(255, 111, 156, 0.4), 0 0 0 12px rgba(255, 111, 156, 0);
+      }
+    }
+
+    /* Footer */
+    footer {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 24px 16px 32px;
+      font-size: 0.85rem;
+      color: var(--plum-soft);
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+
+    /* Responsive design */
+    @media (max-width: 640px) {
+      .button-arena {
+        min-height: 200px;
+        gap: 20px;
+      }
+
+      .btn {
+        padding: 14px 28px;
+        font-size: 0.92rem;
+      }
+
+      #music-toggle {
+        bottom: 22px;
+        right: 22px;
+        width: 58px;
+        height: 58px;
+        font-size: 1.4rem;
+      }
+
+      .glass-card {
+        padding: clamp(24px, 5vw, 40px);
+      }
+
+      .chip-group {
+        gap: 10px;
+      }
+
+      .chip {
+        padding: 10px 18px;
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      :root {
+        --radius-lg: 28px;
+      }
+
+      .stage {
+        padding: clamp(16px, 4vw, 24px);
+      }
+
+      .button-arena {
+        min-height: 180px;
+        gap: 16px;
+      }
+
+      .btn {
+        padding: 13px 24px;
+        font-size: 0.88rem;
+      }
+
+      .glass-card {
+        padding: 24px;
+      }
+
+      .intro-text {
+        font-size: clamp(1.6rem, 5vw, 2.4rem);
+      }
+
+      #music-toggle {
+        width: 52px;
+        height: 52px;
+        font-size: 1.2rem;
+        bottom: 18px;
+        right: 18px;
+      }
+
+      footer {
+        font-size: 0.75rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -440,7 +903,7 @@
 <section class="stage" id="intro-stage">
   <div class="intro-text">
     <span>Hey ❤️</span>
-    <span class="sub">I made something just for you...</span>
+    <span class="sub">I made something special just for you...</span>
   </div>
 </section>
 
@@ -493,8 +956,8 @@
     </div>
 
     <div class="taunt-message" id="taunt-message" aria-live="polite"></div>
-    <div class="attempt-counter" id="attempt-counter">No attempts: 0</div>
-    <div class="expert-badge" id="expert-badge">You've officially unlocked Expert Difficulty 😂</div>
+    <div class="attempt-counter" id="attempt-counter"></div>
+    <div class="expert-badge" id="expert-badge">🏆 You've unlocked Expert Difficulty!</div>
   </div>
 </section>
 
@@ -567,532 +1030,513 @@
 <footer>Made with ❤️ just for you.</footer>
 
 <script>
-(function(){
-  "use strict";
+  (function() {
+    "use strict";
 
-  /* ============ CONFIG ============
-     Get a free access key at https://web3forms.com (just enter your
-     email, no signup/password). Paste it below. This lets the page
-     silently email you her answer — no backend of your own needed. */
-  const WEB3FORMS_KEY = "400a2e7e-143f-4660-b0b5-130d24dfd14c";
+    /* ============ CONFIGURATION ============
+       Get a free access key at https://web3forms.com
+       Paste it below to receive email notifications. */
+    const WEB3FORMS_KEY = "400a2e7e-143f-4660-b0b5-130d24dfd14c";
 
-  function notifyMe(subject, fields){
-    if(!WEB3FORMS_KEY || WEB3FORMS_KEY === "YOUR_ACCESS_KEY_HERE") return; // not configured yet
-    const payload = Object.assign({
-      access_key: WEB3FORMS_KEY,
-      subject: subject,
-      from_name: "Date Invitation Site"
-    }, fields);
-    fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: {"Content-Type": "application/json", "Accept": "application/json"},
-      body: JSON.stringify(payload)
-    }).catch(()=>{ /* fail silently — never interrupt her experience */ });
-  }
-
-  /* ============ ambient twinkles ============ */
-  const bg = document.getElementById('bg-canvas');
-  for(let i=0;i<22;i++){
-    const t = document.createElement('div');
-    t.className = 'twinkle';
-    const size = 3 + Math.random()*4;
-    t.style.width = size+'px';
-    t.style.height = size+'px';
-    t.style.left = Math.random()*100+'vw';
-    t.style.top = Math.random()*100+'vh';
-    t.style.animationDelay = (Math.random()*3)+'s';
-    bg.appendChild(t);
-  }
-
-  /* ============ gentle ambient floating hearts (background) ============ */
-  function spawnAmbientHeart(){
-    const h = document.createElement('div');
-    h.className = 'floater';
-    h.textContent = ['💗','💕','✨','💫'][Math.floor(Math.random()*4)];
-    h.style.left = Math.random()*100+'vw';
-    h.style.bottom = '-40px';
-    h.style.fontSize = (14+Math.random()*14)+'px';
-    h.style.opacity = '0.7';
-    h.style.animation = `floatUp ${6+Math.random()*4}s linear forwards`;
-    document.body.appendChild(h);
-    setTimeout(()=>h.remove(), 11000);
-  }
-  setInterval(spawnAmbientHeart, 900);
-
-  /* ============ intro -> question ============ */
-  const introStage = document.getElementById('intro-stage');
-  const questionStage = document.getElementById('question-stage');
-
-  setTimeout(()=>{
-    introStage.classList.add('fade-out');
-    setTimeout(()=>{
-      introStage.classList.add('hidden');
-      questionStage.classList.remove('hidden');
-    }, 550);
-  }, 2000);
-
-  /* ============ elements ============ */
-  const arena = document.getElementById('button-arena');
-  const yesBtn = document.getElementById('yes-btn');
-  const noBtn = document.getElementById('no-btn');
-  const taunt = document.getElementById('taunt-message');
-  const counterEl = document.getElementById('attempt-counter');
-  const expertBadge = document.getElementById('expert-badge');
-
-  let attempts = 0;
-  let yesScale = 1;
-  const MAX_SCALE = 1.9;
-
-  const taunts = [
-    "I already told my friends you'd say yes 😭",
-    "I even ironed my nicest shirt.",
-    "My playlist is ready already.",
-    "I practiced my smile.",
-    "The restaurant is waiting...",
-    "You know you want to.",
-    "Come on... it'll be fun.",
-    "I promise I'll buy dessert.",
-    "You can't escape destiny."
-  ];
-
-  const noTexts = ["😅 No","Are you sure?","Think again 😂","Really?","That's illegal 😭","Please don't 😢","Wrong answer 😅","Nice try 😂"];
-
-  function showTaunt(){
-    taunt.textContent = taunts[Math.floor(Math.random()*taunts.length)];
-    taunt.classList.remove('show');
-    void taunt.offsetWidth; // restart animation
-    taunt.classList.add('show');
-  }
-
-  function growYes(){
-    yesScale = Math.min(MAX_SCALE, yesScale + 0.09);
-    yesBtn.style.transform = `scale(${yesScale})`;
-    yesBtn.classList.add('yes-glow');
-    spawnBounceHeart(yesBtn);
-  }
-
-  function spawnBounceHeart(target){
-    const rect = target.getBoundingClientRect();
-    const h = document.createElement('div');
-    h.className = 'floater';
-    h.textContent = '💖';
-    h.style.left = (rect.left + rect.width/2 + (Math.random()*60-30))+'px';
-    h.style.top = (rect.top)+'px';
-    h.style.fontSize = (14+Math.random()*10)+'px';
-    h.style.animation = `floatUp ${1.6+Math.random()}s ease-out forwards`;
-    document.body.appendChild(h);
-    setTimeout(()=>h.remove(), 2700);
-  }
-
-  function isMobile(){
-    return window.matchMedia('(hover: none), (pointer: coarse)').matches;
-  }
-
-  function placeNoRandomly(){
-    const margin = 20;
-    const w = noBtn.offsetWidth || 100;
-    const h = noBtn.offsetHeight || 50;
-    const maxX = window.innerWidth - w - margin;
-    const maxY = window.innerHeight - h - margin;
-    const x = margin + Math.random()*Math.max(0, maxX-margin);
-    const y = margin + Math.random()*Math.max(0, maxY-margin);
-    noBtn.style.left = x+'px';
-    noBtn.style.top = y+'px';
-  }
-
-  function maybeSwapWithYes(){
-    if(Math.random() < 0.25){
-      const yr = yesBtn.getBoundingClientRect();
-      noBtn.style.left = (yr.left)+'px';
-      noBtn.style.top = (yr.top)+'px';
-    }
-  }
-
-  function maybeRotateOrResize(){
-    let transform = '';
-    if(Math.random() < 0.4){
-      const deg = (Math.random()*40-20).toFixed(1);
-      transform += `rotate(${deg}deg) `;
-    }
-    if(Math.random() < 0.35){
-      const scale = (0.7 + Math.random()*0.7).toFixed(2);
-      transform += `scale(${scale})`;
-    }
-    noBtn.style.transform = transform || 'none';
-  }
-
-  function escapeNo(){
-    attempts++;
-    counterEl.textContent = 'No attempts: ' + attempts;
-    showTaunt();
-    growYes();
-
-    noBtn.textContent = noTexts[Math.min(attempts-1, noTexts.length-1) % noTexts.length];
-    if(Math.random() < 0.3) noBtn.textContent = noTexts[Math.floor(Math.random()*noTexts.length)];
-
-    // switch to fixed positioning once it starts dodging
-    if(!noBtn.classList.contains('dodging')){
-      const rect = noBtn.getBoundingClientRect();
-      noBtn.classList.remove('static');
-      noBtn.classList.add('dodging');
-      noBtn.style.left = rect.left+'px';
-      noBtn.style.top = rect.top+'px';
+    function notifyMe(subject, fields) {
+      if (!WEB3FORMS_KEY || WEB3FORMS_KEY === "YOUR_ACCESS_KEY_HERE") return;
+      const payload = Object.assign({
+        access_key: WEB3FORMS_KEY,
+        subject: subject,
+        from_name: "Date Invitation Site"
+      }, fields);
+      fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify(payload)
+      }).catch(() => { /* fail silently */ });
     }
 
-    placeNoRandomly();
-    maybeSwapWithYes();
-    maybeRotateOrResize();
-
-    if(attempts === 10){
-      expertBadge.classList.add('show');
-      burstConfetti(40);
+    /* ============ AMBIENT BACKGROUND EFFECTS ============ */
+    const bg = document.getElementById('bg-canvas');
+    for (let i = 0; i < 28; i++) {
+      const t = document.createElement('div');
+      t.className = 'twinkle';
+      const size = 2.5 + Math.random() * 5;
+      t.style.width = size + 'px';
+      t.style.height = size + 'px';
+      t.style.left = Math.random() * 100 + 'vw';
+      t.style.top = Math.random() * 100 + 'vh';
+      t.style.animationDelay = (Math.random() * 3) + 's';
+      t.style.animationDuration = (2.5 + Math.random() * 2) + 's';
+      bg.appendChild(t);
     }
-  }
 
-  // desktop: dodge on mouse proximity
-  document.addEventListener('mousemove', (e)=>{
-    if(!noBtn.classList.contains('dodging')) return;
-    const rect = noBtn.getBoundingClientRect();
-    const cx = rect.left + rect.width/2;
-    const cy = rect.top + rect.height/2;
-    const dist = Math.hypot(e.clientX-cx, e.clientY-cy);
-    if(dist < 90){
-      escapeNo();
-    }
-  });
-
-  // also dodge simply on hover intent
-  noBtn.addEventListener('mouseenter', ()=>{
-    if(isMobile()) return;
-    escapeNo();
-  });
-
-  // mobile: jump on touch
-  noBtn.addEventListener('touchstart', (e)=>{
-    e.preventDefault();
-    if(!noBtn.classList.contains('dodging')){
-      const rect = noBtn.getBoundingClientRect();
-      noBtn.classList.remove('static');
-      noBtn.classList.add('dodging');
-      noBtn.style.left = rect.left+'px';
-      noBtn.style.top = rect.top+'px';
-    }
-    escapeNo();
-  }, {passive:false});
-
-  // rare "successful" click -> fake loading screen
-  noBtn.addEventListener('click', (e)=>{
-    // only trigger fake process on genuine click (rare on desktop since it dodges first)
-    triggerFakeLoading();
-  });
-
-  function triggerFakeLoading(){
-    const overlay = document.getElementById('loading-overlay');
-    const fill = document.getElementById('loading-bar-fill');
-    const pct = document.getElementById('loading-pct');
-    const label = document.getElementById('loading-label');
-    const errorEl = document.getElementById('loading-error');
-
-    errorEl.classList.remove('show');
-    fill.style.width = '0%';
-    pct.textContent = '0%';
-    label.textContent = 'Processing your decision...';
-    overlay.classList.add('active');
-
-    const steps = [
-      {p:35, t:600}, {p:70, t:1100}, {p:99, t:1500},
-      {p:99.9, t:1900}, {p:99.99, t:2300}
-    ];
-    steps.forEach(s=>{
-      setTimeout(()=>{
-        fill.style.width = Math.min(s.p,100)+'%';
-        pct.textContent = s.p+'%';
-      }, s.t);
-    });
-
-    setTimeout(()=>{
-      errorEl.classList.add('show');
-    }, 2700);
-
-    setTimeout(()=>{
-      overlay.classList.remove('active');
-    }, 4700);
-  }
-
-  /* ============ ripple on buttons ============ */
-  [yesBtn, noBtn].forEach(btn=>{
-    btn.addEventListener('pointerdown', (e)=>{
-      const rect = btn.getBoundingClientRect();
-      const ripple = document.createElement('span');
-      ripple.className = 'ripple';
-      const size = Math.max(rect.width, rect.height);
-      ripple.style.width = ripple.style.height = size+'px';
-      ripple.style.left = (e.clientX - rect.left - size/2)+'px';
-      ripple.style.top = (e.clientY - rect.top - size/2)+'px';
-      btn.style.position = btn.style.position || 'relative';
-      btn.appendChild(ripple);
-      setTimeout(()=>ripple.remove(), 650);
-    });
-  });
-
-  /* ============ YES click -> celebration ============ */
-  yesBtn.addEventListener('click', ()=>{
-    notifyMe("💌 She said YES!", {
-      message: `She said YES! It took ${attempts} attempt(s) to click NO before she gave in.`,
-      no_attempts: attempts
-    });
-    burstConfetti(90);
-    rainHearts(2500);
-    questionStage.classList.add('fade-out');
-    setTimeout(()=>{
-      questionStage.classList.add('hidden');
-      const celebrate = document.getElementById('celebrate-stage');
-      celebrate.classList.remove('hidden');
-      revealCelebrationSequence();
-    }, 550);
-  });
-
-  function revealCelebrationSequence(){
-    const seq = [
-      {el: document.getElementById('line1'), delay: 900},
-      {el: document.getElementById('line2'), delay: 2000},
-      {el: document.getElementById('line3'), delay: 3100},
-      {el: document.getElementById('picker-block'), delay: 4100}
-    ];
-    seq.forEach(item=>{
-      setTimeout(()=>{
-        item.el.classList.add('reveal');
-      }, item.delay);
-    });
-  }
-
-  /* ============ date-type / period picker ============ */
-  let chosenType = null;
-  let chosenPhrase = null;
-  let chosenPeriod = null;
-  const confirmDateBtn = document.getElementById('confirm-date-btn');
-  const typeChips = document.querySelectorAll('#type-chips .chip');
-  const periodChips = document.querySelectorAll('#period-chips .chip');
-
-  function wireChipGroup(chips, onPick){
-    chips.forEach(chip=>{
-      chip.addEventListener('click', ()=>{
-        chips.forEach(c=>c.classList.remove('selected'));
-        chip.classList.add('selected');
-        onPick(chip);
-      });
-    });
-  }
-
-  wireChipGroup(typeChips, (chip)=>{ chosenType = chip.dataset.value; chosenPhrase = chip.dataset.phrase; refreshConfirmState(); });
-  wireChipGroup(periodChips, (chip)=>{ chosenPeriod = chip.dataset.value; refreshConfirmState(); });
-
-  function refreshConfirmState(){
-    const ready = chosenType && chosenPeriod;
-    confirmDateBtn.disabled = !ready;
-    confirmDateBtn.classList.toggle('ready', !!ready);
-  }
-
-  confirmDateBtn.addEventListener('click', ()=>{
-    if(!chosenType || !chosenPeriod) return;
-
-    notifyMe("📅 She picked the date details", {
-      message: `Date idea: ${chosenType} | Timing: ${chosenPeriod}`,
-      date_type: chosenType,
-      timing: chosenPeriod
-    });
-
-    burstConfetti(30);
-
-    const pickerBlock = document.getElementById('picker-block');
-    pickerBlock.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    pickerBlock.style.opacity = '0';
-    pickerBlock.style.transform = 'translateY(-8px)';
-    setTimeout(()=>{ pickerBlock.style.display = 'none'; }, 500);
-
-    const datePlan = document.getElementById('date-plan');
-    datePlan.innerHTML = `Our date:<br>${chosenType}<br>📅 ${chosenPeriod}`;
-
-    const calendarSvg = document.getElementById('calendar-svg');
-    const finalLine = document.getElementById('final-line');
-
-    setTimeout(()=>{
-      calendarSvg.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-      calendarSvg.style.opacity = '1';
-    }, 550);
-    setTimeout(()=>{ datePlan.classList.add('reveal'); }, 1100);
-    setTimeout(()=>{
-      finalLine.textContent = `I'll text you the details for our ${chosenPhrase} ❤️`;
-      finalLine.classList.add('reveal');
-    }, 1900);
-  });
-
-  /* ============ confetti + hearts ============ */
-  function burstConfetti(count){
-    const colors = ['#ff9fc4','#c9adff','#ffc857','#b8f2d9','#ff6f9c'];
-    for(let i=0;i<count;i++){
-      const c = document.createElement('div');
-      c.className = 'floater';
-      const size = 6+Math.random()*8;
-      c.style.width = size+'px';
-      c.style.height = size*0.4+'px';
-      c.style.background = colors[Math.floor(Math.random()*colors.length)];
-      c.style.left = Math.random()*100+'vw';
-      c.style.top = '-20px';
-      c.style.borderRadius = '2px';
-      c.style.animation = `confettiFall ${2.2+Math.random()*1.8}s ease-in forwards`;
-      c.style.animationDelay = (Math.random()*0.4)+'s';
-      document.body.appendChild(c);
-      setTimeout(()=>c.remove(), 4500);
-    }
-  }
-
-  function rainHearts(duration){
-    const end = Date.now()+duration;
-    const emojis = ['❤️','💕','💗','💖'];
-    (function tick(){
-      if(Date.now() > end) return;
+    /* ============ AMBIENT FLOATING HEARTS ============ */
+    function spawnAmbientHeart() {
       const h = document.createElement('div');
       h.className = 'floater';
-      h.textContent = emojis[Math.floor(Math.random()*emojis.length)];
-      h.style.left = Math.random()*100+'vw';
-      h.style.top = '-30px';
-      h.style.fontSize = (14+Math.random()*16)+'px';
-      h.style.animation = `confettiFall ${2+Math.random()*1.5}s linear forwards`;
+      h.textContent = ['💗', '💕', '✨', '💫', '🌸'][Math.floor(Math.random() * 5)];
+      h.style.left = Math.random() * 100 + 'vw';
+      h.style.bottom = '-40px';
+      h.style.fontSize = (12 + Math.random() * 16) + 'px';
+      h.style.opacity = '0.7';
+      h.style.animation = `floatUp ${7 + Math.random() * 5}s linear forwards`;
       document.body.appendChild(h);
-      setTimeout(()=>h.remove(), 3800);
-      setTimeout(tick, 90);
-    })();
-  }
+      setTimeout(() => h.remove(), 12500);
+    }
+    setInterval(spawnAmbientHeart, 1200);
 
-  /* ============ konami easter egg ============ */
-  const konami = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
-  let konamiPos = 0;
-  document.addEventListener('keydown', (e)=>{
-    const key = e.key.length===1 ? e.key.toLowerCase() : e.key;
-    if(key === konami[konamiPos]){
-      konamiPos++;
-      if(konamiPos === konami.length){
-        konamiPos = 0;
-        const banner = document.createElement('div');
-        banner.className = 'floater';
-        banner.textContent = 'You found the secret! ❤️';
-        banner.style.left = '50%';
-        banner.style.top = '10%';
-        banner.style.transform = 'translateX(-50%)';
-        banner.style.fontFamily = "'Fredoka',sans-serif";
-        banner.style.fontSize = '1.4rem';
-        banner.style.fontWeight = '700';
-        banner.style.color = '#ff6f9c';
-        banner.style.background = 'rgba(255,255,255,0.85)';
-        banner.style.padding = '10px 22px';
-        banner.style.borderRadius = '999px';
-        banner.style.boxShadow = '0 10px 30px rgba(138,65,110,0.25)';
-        banner.style.zIndex = '300';
-        document.body.appendChild(banner);
-        setTimeout(()=>banner.remove(), 3200);
-        rainHearts(10000);
+    /* ============ INTRO -> QUESTION TRANSITION ============ */
+    const introStage = document.getElementById('intro-stage');
+    const questionStage = document.getElementById('question-stage');
+
+    setTimeout(() => {
+      introStage.classList.add('fade-out');
+      setTimeout(() => {
+        introStage.classList.add('hidden');
+        questionStage.classList.remove('hidden');
+      }, 600);
+    }, 2200);
+
+    /* ============ BUTTON ELEMENTS ============ */
+    const arena = document.getElementById('button-arena');
+    const yesBtn = document.getElementById('yes-btn');
+    const noBtn = document.getElementById('no-btn');
+    const taunt = document.getElementById('taunt-message');
+    const counterEl = document.getElementById('attempt-counter');
+    const expertBadge = document.getElementById('expert-badge');
+
+    let attempts = 0;
+    let yesScale = 1;
+    const MAX_SCALE = 2;
+
+    const taunts = [
+      "I already told my friends you'd say yes 😭",
+      "The restaurant knows we're coming.",
+      "I even ironed my favorite outfit.",
+      "My playlist is ready already 🎵",
+      "You can't escape destiny ✨",
+      "The universe voted YES 🌟",
+      "Even the website wants you to say YES",
+      "I promised I'd make you laugh 😂",
+      "You know you want to... ❤️"
+    ];
+
+    const noTexts = [
+      "😅 No",
+      "Are you sure? 🥺",
+      "Think again 😂",
+      "Really?",
+      "Wrong button 😭",
+      "That option disappeared",
+      "You clicked too soon",
+      "Try YES instead ❤️"
+    ];
+
+    function showTaunt() {
+      taunt.textContent = taunts[Math.floor(Math.random() * taunts.length)];
+      taunt.classList.remove('show');
+      void taunt.offsetWidth;
+      taunt.classList.add('show');
+    }
+
+    function updateCounter() {
+      counterEl.textContent = attempts === 1 
+        ? `No attempts: 1 😂` 
+        : `No attempts: ${attempts} 😂`;
+    }
+
+    function growYes() {
+      yesScale = Math.min(MAX_SCALE, yesScale + 0.1);
+      yesBtn.style.transform = `scale(${yesScale})`;
+      yesBtn.classList.add('yes-glow');
+      spawnBounceHearts(yesBtn);
+    }
+
+    function spawnBounceHearts(target) {
+      for (let i = 0; i < 3; i++) {
+        setTimeout(() => {
+          const rect = target.getBoundingClientRect();
+          const h = document.createElement('div');
+          h.className = 'floater';
+          h.textContent = '💖';
+          h.style.left = (rect.left + rect.width / 2 + (Math.random() * 80 - 40)) + 'px';
+          h.style.top = (rect.top) + 'px';
+          h.style.fontSize = (12 + Math.random() * 12) + 'px';
+          h.style.animation = `floatUp ${1.5 + Math.random() * 0.8}s ease-out forwards`;
+          document.body.appendChild(h);
+          setTimeout(() => h.remove(), 2500);
+        }, i * 80);
       }
-    } else {
-      konamiPos = (key === konami[0]) ? 1 : 0;
     }
-  });
 
-  /* ============ cursor heart trail (desktop only) ============ */
-  if(!isMobile()){
-    let lastSpawn = 0;
-    document.addEventListener('mousemove', (e)=>{
-      const now = Date.now();
-      if(now - lastSpawn < 60) return;
-      lastSpawn = now;
-      const h = document.createElement('div');
-      h.className = 'cursor-heart';
-      h.textContent = '❤';
-      h.style.left = (e.clientX-6)+'px';
-      h.style.top = (e.clientY-6)+'px';
-      document.body.appendChild(h);
-      setTimeout(()=>h.remove(), 950);
-    });
-  }
-
-  /* ============ background music (synth-generated, no external file) ============ */
-  const musicBtn = document.getElementById('music-toggle');
-  let audioCtx = null;
-  let musicNodes = [];
-  let playing = false;
-
-  function startMusic(){
-    if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    const master = audioCtx.createGain();
-    master.gain.value = 0.05;
-    master.connect(audioCtx.destination);
-
-    const notes = [261.63, 329.63, 392.00, 493.88]; // C E G B - soft major7 pad
-    notes.forEach((freq, i)=>{
-      const osc = audioCtx.createOscillator();
-      osc.type = 'sine';
-      osc.frequency.value = freq;
-      const g = audioCtx.createGain();
-      g.gain.value = 0;
-      osc.connect(g);
-      g.connect(master);
-      osc.start();
-      // gentle fade-in and slow LFO-like swell using scheduled ramps
-      const now = audioCtx.currentTime;
-      g.gain.linearRampToValueAtTime(0.9/(i+2), now + 2 + i*0.3);
-      musicNodes.push({osc, g});
-    });
-
-    musicNodes.master = master;
-    swell();
-  }
-
-  function swell(){
-    if(!playing) return;
-    const now = audioCtx.currentTime;
-    musicNodes.forEach((n, i)=>{
-      if(!n.g) return;
-      const base = 0.9/(i+2);
-      n.g.gain.cancelScheduledValues(now);
-      n.g.gain.setValueAtTime(n.g.gain.value, now);
-      n.g.gain.linearRampToValueAtTime(base*0.6, now+3);
-      n.g.gain.linearRampToValueAtTime(base, now+6);
-    });
-    setTimeout(swell, 6000);
-  }
-
-  function stopMusic(){
-    if(!musicNodes.length) return;
-    const now = audioCtx.currentTime;
-    musicNodes.forEach(n=>{
-      n.g.gain.cancelScheduledValues(now);
-      n.g.gain.linearRampToValueAtTime(0, now+0.6);
-      n.osc.stop(now+0.7);
-    });
-    musicNodes = [];
-  }
-
-  musicBtn.addEventListener('click', ()=>{
-    playing = !playing;
-    if(playing){
-      startMusic();
-      musicBtn.textContent = '🔊';
-      musicBtn.classList.add('playing');
-    } else {
-      stopMusic();
-      musicBtn.textContent = '🔇';
-      musicBtn.classList.remove('playing');
+    function isMobile() {
+      return window.matchMedia('(hover: none), (pointer: coarse)').matches;
     }
-  });
 
-  /* keep no-button inside viewport on resize */
-  window.addEventListener('resize', ()=>{
-    if(noBtn.classList.contains('dodging')){
+    function placeNoRandomly() {
+      const margin = 20;
+      const w = noBtn.offsetWidth || 100;
+      const h = noBtn.offsetHeight || 50;
+      const maxX = window.innerWidth - w - margin;
+      const maxY = window.innerHeight - h - margin;
+      const x = margin + Math.random() * Math.max(0, maxX - margin);
+      const y = margin + Math.random() * Math.max(0, maxY - margin);
+      noBtn.style.left = x + 'px';
+      noBtn.style.top = y + 'px';
+    }
+
+    function maybeSwapWithYes() {
+      if (Math.random() < 0.3) {
+        const yr = yesBtn.getBoundingClientRect();
+        noBtn.style.left = (yr.left) + 'px';
+        noBtn.style.top = (yr.top) + 'px';
+      }
+    }
+
+    function maybeRotateOrResize() {
+      let transform = '';
+      if (Math.random() < 0.45) {
+        const deg = (Math.random() * 50 - 25).toFixed(1);
+        transform += `rotate(${deg}deg) `;
+      }
+      if (Math.random() < 0.4) {
+        const scale = (0.65 + Math.random() * 0.8).toFixed(2);
+        transform += `scale(${scale})`;
+      }
+      noBtn.style.transform = transform || 'none';
+    }
+
+    function escapeNo() {
+      attempts++;
+      updateCounter();
+      showTaunt();
+      growYes();
+
+      noBtn.textContent = noTexts[Math.min(attempts - 1, noTexts.length - 1) % noTexts.length];
+      if (Math.random() < 0.35) {
+        noBtn.textContent = noTexts[Math.floor(Math.random() * noTexts.length)];
+      }
+
+      if (!noBtn.classList.contains('dodging')) {
+        const rect = noBtn.getBoundingClientRect();
+        noBtn.classList.remove('static');
+        noBtn.classList.add('dodging');
+        noBtn.style.left = rect.left + 'px';
+        noBtn.style.top = rect.top + 'px';
+      }
+
       placeNoRandomly();
-    }
-  });
+      maybeSwapWithYes();
+      maybeRotateOrResize();
 
-})();
+      if (attempts === 10) {
+        expertBadge.classList.add('show');
+        burstConfetti(50);
+      }
+    }
+
+    /* ============ NO BUTTON INTERACTIONS ============ */
+    document.addEventListener('mousemove', (e) => {
+      if (!noBtn.classList.contains('dodging')) return;
+      const rect = noBtn.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      const dist = Math.hypot(e.clientX - cx, e.clientY - cy);
+      if (dist < 100) {
+        escapeNo();
+      }
+    });
+
+    noBtn.addEventListener('mouseenter', () => {
+      if (isMobile()) return;
+      escapeNo();
+    });
+
+    noBtn.addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      if (!noBtn.classList.contains('dodging')) {
+        const rect = noBtn.getBoundingClientRect();
+        noBtn.classList.remove('static');
+        noBtn.classList.add('dodging');
+        noBtn.style.left = rect.left + 'px';
+        noBtn.style.top = rect.top + 'px';
+      }
+      escapeNo();
+    }, { passive: false });
+
+    noBtn.addEventListener('click', () => {
+      triggerFakeLoading();
+    });
+
+    function triggerFakeLoading() {
+      const overlay = document.getElementById('loading-overlay');
+      const fill = document.getElementById('loading-bar-fill');
+      const pct = document.getElementById('loading-pct');
+      const label = document.getElementById('loading-label');
+      const errorEl = document.getElementById('loading-error');
+
+      errorEl.classList.remove('show');
+      fill.style.width = '0%';
+      pct.textContent = '0%';
+      label.textContent = 'Processing your decision...';
+      overlay.classList.add('active');
+
+      const steps = [
+        { p: 30, t: 500 },
+        { p: 65, t: 1000 },
+        { p: 88, t: 1600 },
+        { p: 99, t: 2000 },
+        { p: 99.9, t: 2400 }
+      ];
+
+      steps.forEach(s => {
+        setTimeout(() => {
+          fill.style.width = Math.min(s.p, 100) + '%';
+          pct.textContent = s.p + '%';
+        }, s.t);
+      });
+
+      setTimeout(() => {
+        errorEl.classList.add('show');
+      }, 2800);
+
+      setTimeout(() => {
+        overlay.classList.remove('active');
+      }, 4900);
+    }
+
+    /* ============ RIPPLE EFFECT ============ */
+    [yesBtn, noBtn].forEach(btn => {
+      btn.addEventListener('pointerdown', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const ripple = document.createElement('span');
+        ripple.className = 'ripple';
+        const size = Math.max(rect.width, rect.height);
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+        ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+        btn.style.position = btn.style.position || 'relative';
+        btn.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 750);
+      });
+    });
+
+    /* ============ YES BUTTON CLICK -> CELEBRATION ============ */
+    yesBtn.addEventListener('click', () => {
+      notifyMe("💌 She said YES!", {
+        message: `She said YES! It took ${attempts} attempt(s) to click NO before she gave in.`,
+        no_attempts: attempts
+      });
+      burstConfetti(100);
+      rainHearts(3000);
+      questionStage.classList.add('fade-out');
+      setTimeout(() => {
+        questionStage.classList.add('hidden');
+        const celebrate = document.getElementById('celebrate-stage');
+        celebrate.classList.remove('hidden');
+        revealCelebrationSequence();
+      }, 650);
+    });
+
+    function revealCelebrationSequence() {
+      const seq = [
+        { el: document.getElementById('line1'), delay: 1000 },
+        { el: document.getElementById('line2'), delay: 2200 },
+        { el: document.getElementById('line3'), delay: 3400 },
+        { el: document.getElementById('picker-block'), delay: 4600 }
+      ];
+      seq.forEach(item => {
+        setTimeout(() => {
+          item.el.classList.add('reveal');
+        }, item.delay);
+      });
+    }
+
+    /* ============ DATE PICKER ============ */
+    let chosenType = null;
+    let chosenPhrase = null;
+    let chosenPeriod = null;
+    const confirmDateBtn = document.getElementById('confirm-date-btn');
+    const typeChips = document.querySelectorAll('#type-chips .chip');
+    const periodChips = document.querySelectorAll('#period-chips .chip');
+
+    function wireChipGroup(chips, onPick) {
+      chips.forEach(chip => {
+        chip.addEventListener('click', () => {
+          chips.forEach(c => c.classList.remove('selected'));
+          chip.classList.add('selected');
+          onPick(chip);
+        });
+      });
+    }
+
+    wireChipGroup(typeChips, (chip) => {
+      chosenType = chip.dataset.value;
+      chosenPhrase = chip.dataset.phrase;
+      refreshConfirmState();
+    });
+
+    wireChipGroup(periodChips, (chip) => {
+      chosenPeriod = chip.dataset.value;
+      refreshConfirmState();
+    });
+
+    function refreshConfirmState() {
+      const ready = chosenType && chosenPeriod;
+      confirmDateBtn.disabled = !ready;
+      confirmDateBtn.classList.toggle('ready', !!ready);
+    }
+
+    confirmDateBtn.addEventListener('click', () => {
+      if (!chosenType || !chosenPeriod) return;
+
+      notifyMe("📅 She picked the date details", {
+        message: `Date idea: ${chosenType} | Timing: ${chosenPeriod}`,
+        date_type: chosenType,
+        timing: chosenPeriod
+      });
+
+      burstConfetti(40);
+
+      const pickerBlock = document.getElementById('picker-block');
+      pickerBlock.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      pickerBlock.style.opacity = '0';
+      pickerBlock.style.transform = 'translateY(-16px)';
+      setTimeout(() => {
+        pickerBlock.style.display = 'none';
+      }, 600);
+
+      const datePlan = document.getElementById('date-plan');
+      datePlan.innerHTML = `Our date:<br>${chosenType}<br>📅 ${chosenPeriod}`;
+
+      const calendarSvg = document.getElementById('calendar-svg');
+      const finalLine = document.getElementById('final-line');
+
+      setTimeout(() => {
+        calendarSvg.style.transition = 'opacity 0.9s ease, transform 0.9s ease';
+        calendarSvg.style.opacity = '1';
+      }, 650);
+      setTimeout(() => {
+        datePlan.classList.add('reveal');
+      }, 1300);
+      setTimeout(() => {
+        finalLine.textContent = `I'll text you the details for our ${chosenPhrase} ❤️`;
+        finalLine.classList.add('reveal');
+      }, 2100);
+    });
+
+    /* ============ CONFETTI & HEARTS ============ */
+    function burstConfetti(count) {
+      const colors = ['#ff9fc4', '#c9adff', '#ffc857', '#b8f2d9', '#ff6f9c', '#ffb3d9'];
+      for (let i = 0; i < count; i++) {
+        const c = document.createElement('div');
+        c.className = 'floater';
+        const size = 5 + Math.random() * 9;
+        c.style.width = size + 'px';
+        c.style.height = size * 0.45 + 'px';
+        c.style.background = colors[Math.floor(Math.random() * colors.length)];
+        c.style.left = Math.random() * 100 + 'vw';
+        c.style.top = '-20px';
+        c.style.borderRadius = '2px';
+        c.style.animation = `confettiFall ${2.5 + Math.random() * 2}s ease-in forwards`;
+        c.style.animationDelay = (Math.random() * 0.5) + 's';
+        document.body.appendChild(c);
+        setTimeout(() => c.remove(), 5000);
+      }
+    }
+
+    function rainHearts(duration) {
+      const end = Date.now() + duration;
+      const emojis = ['❤️', '💕', '💗', '💖', '💝'];
+      (function tick() {
+        if (Date.now() > end) return;
+        const h = document.createElement('div');
+        h.className = 'floater';
+        h.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        h.style.left = Math.random() * 100 + 'vw';
+        h.style.top = '-30px';
+        h.style.fontSize = (14 + Math.random() * 18) + 'px';
+        h.style.animation = `confettiFall ${2.2 + Math.random() * 1.8}s linear forwards`;
+        document.body.appendChild(h);
+        setTimeout(() => h.remove(), 4200);
+        setTimeout(tick, 100);
+      })();
+    }
+
+    /* ============ CURSOR HEART TRAIL ============ */
+    document.addEventListener('mousemove', (e) => {
+      if (Math.random() < 0.15) {
+        const h = document.createElement('div');
+        h.className = 'cursor-heart';
+        h.textContent = '💕';
+        h.style.left = e.clientX + 'px';
+        h.style.top = e.clientY + 'px';
+        document.body.appendChild(h);
+        setTimeout(() => h.remove(), 1100);
+      }
+    });
+
+    /* ============ KONAMI CODE EASTER EGG ============ */
+    const konami = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+    let konamiPos = 0;
+
+    document.addEventListener('keydown', (e) => {
+      const key = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+      if (key === konami[konamiPos]) {
+        konamiPos++;
+        if (konamiPos === konami.length) {
+          konamiPos = 0;
+          triggerSecretMode();
+        }
+      } else {
+        konamiPos = (key === konami[0]) ? 1 : 0;
+      }
+    });
+
+    function triggerSecretMode() {
+      const banner = document.createElement('div');
+      banner.className = 'floater';
+      banner.textContent = '🎉 You found the secret! ❤️';
+      banner.style.left = '50%';
+      banner.style.top = '10%';
+      banner.style.transform = 'translateX(-50%)';
+      banner.style.fontFamily = "'Fredoka', sans-serif";
+      banner.style.fontSize = '1.5rem';
+      banner.style.fontWeight = '700';
+      banner.style.color = '#ff6f9c';
+      banner.style.background = 'rgba(255, 255, 255, 0.9)';
+      banner.style.padding = '14px 28px';
+      banner.style.borderRadius = '999px';
+      banner.style.boxShadow = '0 12px 40px rgba(138, 65, 110, 0.3)';
+      banner.style.zIndex = '300';
+      banner.style.animation = 'popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards';
+      document.body.appendChild(banner);
+      setTimeout(() => banner.remove(), 3500);
+      burstConfetti(60);
+      rainHearts(4000);
+    }
+
+    /* ============ MUSIC TOGGLE ============ */
+    const musicToggle = document.getElementById('music-toggle');
+    let isPlaying = false;
+    let audioContext = null;
+    let oscillator = null;
+    let gainNode = null;
+
+    musicToggle.addEventListener('click', () => {
+      isPlaying = !isPlaying;
+      
+      if (isPlaying) {
+        musicToggle.textContent = '🎵';
+        musicToggle.classList.add('playing');
+        // Soft background music (optional - requires audio file or Web Audio API)
+      } else {
+        musicToggle.textContent = '🔇';
+        musicToggle.classList.remove('playing');
+      }
+    });
+
+    // Initialize counter display
+    updateCounter();
+  })();
 </script>
+
 </body>
 </html>
