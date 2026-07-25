@@ -280,13 +280,11 @@
     .button-arena {
       position: relative;
       width: 100%;
-      min-height: 60px;
+      height: 70px;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: clamp(10px, 2vw, 16px);
-      flex-wrap: wrap;
-      overflow: hidden;
       margin: 12px 0;
       flex-shrink: 0;
     }
@@ -359,33 +357,40 @@
       }
     }
 
-    /* NO button - constrained to button arena */
+    /* NO button - evasive but always visible and clickable */
     .btn-no {
       background: rgba(255, 255, 255, 0.85);
       color: var(--plum-soft);
       border: 2.5px solid rgba(138, 107, 134, 0.3);
       position: absolute;
-      z-index: 50;
+      z-index: 10;
       box-shadow: 0 8px 20px var(--shadow);
       transition: all 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
       width: auto;
       max-width: 110px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: all;
     }
 
     .btn-no:hover {
       background: rgba(255, 255, 255, 0.95);
       border-color: rgba(138, 107, 134, 0.4);
-      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(138, 107, 134, 0.3);
     }
 
     .btn-no.static {
       position: relative;
       z-index: 1;
       max-width: none;
+      transform: none;
+      top: auto;
+      left: auto;
     }
 
     .btn-no.dodging {
-      transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      transition: all 0.18s ease-out;
     }
 
     /* Attempt counter and taunt message */
@@ -859,7 +864,7 @@
 
     @media (max-width: 640px) {
       .button-arena {
-        min-height: 50px;
+        height: 60px;
         gap: 8px;
         margin: 10px 0;
       }
@@ -913,7 +918,7 @@
       }
 
       .button-arena {
-        min-height: 45px;
+        height: 55px;
         gap: 6px;
         margin: 8px 0;
       }
@@ -1249,15 +1254,21 @@
       if (attemptCount < 10) {
         attemptCount++;
         const arenaRect = buttonArena.getBoundingClientRect();
-        const btnRect = noBtn.getBoundingClientRect();
-        const maxX = arenaRect.width - btnRect.width - 10;
-        const maxY = arenaRect.height - btnRect.height - 10;
-        const randomX = Math.max(10, Math.random() * maxX);
-        const randomY = Math.max(10, Math.random() * maxY);
+        const btnWidth = 100;
+        const btnHeight = 50;
+        
+        // Calculate boundaries to keep button within container
+        const maxX = (arenaRect.width - btnWidth) / 2;
+        const maxY = (arenaRect.height - btnHeight) / 2;
+        const minX = -(maxX);
+        const minY = -(maxY);
+        
+        // Random position within bounds
+        const randomX = minX + Math.random() * (maxX - minX);
+        const randomY = minY + Math.random() * (maxY - minY);
 
         noBtn.classList.add('dodging');
-        noBtn.style.left = randomX + 'px';
-        noBtn.style.top = randomY + 'px';
+        noBtn.style.transform = `translate(calc(-50% + ${randomX}px), calc(-50% + ${randomY}px))`;
 
         const tauntMsg = document.getElementById('taunt-message');
         tauntMsg.textContent = taunts[Math.min(attemptCount - 1, taunts.length - 1)];
@@ -1278,10 +1289,15 @@
       if (attemptCount < 10) {
         attemptCount++;
         const arenaRect = buttonArena.getBoundingClientRect();
-        const randomX = Math.random() * (arenaRect.width - 100);
-        const randomY = Math.random() * (arenaRect.height - 50);
-        noBtn.style.left = randomX + 'px';
-        noBtn.style.top = randomY + 'px';
+        const maxX = (arenaRect.width - 100) / 2;
+        const maxY = (arenaRect.height - 50) / 2;
+        const minX = -maxX;
+        const minY = -maxY;
+        
+        const randomX = minX + Math.random() * (maxX - minX);
+        const randomY = minY + Math.random() * (maxY - minY);
+        
+        noBtn.style.transform = `translate(calc(-50% + ${randomX}px), calc(-50% + ${randomY}px))`;
       }
     });
   }
