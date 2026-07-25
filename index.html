@@ -1387,10 +1387,13 @@
     confirmDateBtn.addEventListener('click', () => {
       if (!chosenType || !chosenPeriod) return;
 
-      notifyMe("📅 She picked the date details", {
-        message: `Date idea: ${chosenType} | Timing: ${chosenPeriod}`,
+      // Send email with complete date plan information
+      notifyMe("📅 She picked the date details!", {
+        message: `Date Plan:\n━━━━━━━━━━━━━━\nActivity: ${chosenType}\nTiming: ${chosenPeriod}\n\nIt took ${attempts} attempt(s) to get here! 💕`,
         date_type: chosenType,
-        timing: chosenPeriod
+        timing: chosenPeriod,
+        no_attempts: attempts,
+        date_plan: `${chosenType} - ${chosenPeriod}`
       });
 
       burstConfetti(40);
